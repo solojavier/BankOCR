@@ -24,6 +24,18 @@ module BankOCR
 
     end
 
+    def generate_report(output_path, accounts)
+      file = File.open(output_path, 'w+')
+
+      accounts.each do |account|
+        file.write account[:account_number]
+        file.write " #{account[:message]}" if !account[:valid]
+        file.write "\n"
+      end
+
+      file.close
+    end
+
     private
 
     def next_entry_to_digits(file)

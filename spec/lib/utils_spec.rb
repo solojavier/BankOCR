@@ -55,4 +55,31 @@ describe BankOCR::Utils do
 
   end
 
+  context 'when generating report' do
+
+    let(:accounts) do
+      [
+        {account_number: "457508000", valid: true,  message: "OK"},
+        {account_number: "664371495", valid: false, message: "ERR"},
+        {account_number: "86110??36", valid: false, message: "ILL"}
+      ]
+    end
+
+    let(:expected_content) do
+      "457508000\n664371495 ERR\n86110??36 ILL\n"
+    end
+
+    let(:output_path) { File.dirname(__FILE__) + '/user_story_3.out' }
+    let(:generated_content) do
+      File.open(output_path).read
+    end
+
+    it 'has expected content' do
+      subject.generate_report(output_path, accounts)
+
+      expect(generated_content).to eq(expected_content)
+    end
+
+  end
+
 end
