@@ -15,6 +15,12 @@ module BankOCR
     end
 
     def validate_accounts(account_numbers)
+      account_numbers.map do |number|
+        valid = sum(number)%11 == 0
+
+        { account_number: number, valid: valid }
+      end
+
     end
 
     private
@@ -47,6 +53,10 @@ module BankOCR
         " _ |_||_|" => "8",
         " _ |_| _|" => "9"
       }
+    end
+
+    def sum(account_number)
+      (0..8).map { |i| account_number[i].to_i * (i + 2) }.reduce(:+)
     end
 
   end

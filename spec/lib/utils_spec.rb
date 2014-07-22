@@ -34,8 +34,20 @@ describe BankOCR::Utils do
       ]
     end
 
+    let(:invalid_accounts) do
+      [
+        { account_number: "888888888", valid: false },
+        { account_number: "490067715", valid: false },
+        { account_number: "012345678", valid: false }
+      ]
+    end
+
     it 'validates valid account numbers' do
       expect(subject.validate_accounts(valid_numbers)).to eq(valid_accounts)
+    end
+
+    it 'validates invalid account numbers' do
+      expect(subject.validate_accounts(invalid_numbers)).to eq(invalid_accounts)
     end
 
   end
