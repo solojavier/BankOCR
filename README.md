@@ -2,15 +2,26 @@
 
 This repository provides a solution for BankOCR kata.
 
-# What is it about?
+## What is it about?
 
 Description of the problem can be found here: http://code.joejag.com/coding-dojo-bank-ocr/
 
-# Why?
+## How to run
+
+Use the following command:
+
+```
+ruby bin/bank_ocr_kata.rb
+```
+
+* It will generate a file under /bin/output directory with results
+* If you want to modify input edit file /bin/ocr_input.in
+
+## Why?
 
 This is an programming kata, not meant to be used in production.
 
-# How is it solved?
+## How is it solved?
 
 This program solves the kata using a functional approach.
 
