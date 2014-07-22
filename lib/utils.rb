@@ -19,11 +19,10 @@ module BankOCR
     # Receives a list of account numbers and returns validation information
     def validate_accounts(account_numbers)
       account_numbers.map do |number|
-        valid, message = validate(number)
+        valid, message = validate(number.to_s)
 
         { account_number: number, valid: valid, message: message}
       end
-
     end
 
     # Creates a file report in ouput path with accounts received

@@ -58,6 +58,10 @@ describe BankOCR::Utils do
       expect(subject.validate_accounts(invalid_numbers)).to eq(invalid_accounts)
     end
 
+    it 'returns empty array if account numbers are not sent' do
+      expect(subject.validate_accounts([])).to eq([])
+    end
+
   end
 
   context 'when generating report' do
