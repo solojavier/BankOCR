@@ -20,6 +20,16 @@ ruby bin/bank_ocr_kata.rb
 * It will generate a file under /bin/output directory with results
 * If you want to modify input edit file /bin/ocr_input.in
 
+## Tests
+
+To run test use the following commands:
+
+```
+gem install bundler
+bundle install
+bundle exec rspec spec
+```
+
 ## Why?
 
 This is an programming kata, not meant to be used in production.
