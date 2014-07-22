@@ -1,14 +1,13 @@
+# Module for BankOCR Application
 module BankOCR
+  # Utility functions to perform data conversions
   module Utils
-
     # Parses an OCR machine input file and returns an array of account numbers
     def parse_file(input_path)
       file    = File.open(input_path)
       numbers = []
 
-      while !file.eof?
-        numbers << next_entry_to_digits(file)
-      end
+      numbers << next_entry_to_digits(file) until file.eof?
       numbers
     rescue
       []
@@ -21,7 +20,7 @@ module BankOCR
       account_numbers.map do |number|
         valid, message = validate(number.to_s)
 
-        { account_number: number, valid: valid, message: message}
+        { account_number: number, valid: valid, message: message }
       end
     end
 
@@ -29,9 +28,9 @@ module BankOCR
     def generate_report(output_path, accounts)
       file = File.open(output_path, 'w+')
 
-      accounts.select{|a| !!a[:account_number]}.each do |account|
-        file.write account[:account_number]
-        file.write " #{account[:message]}" if !account[:valid] && account[:message]
+      accounts.select { |a| a[:account_number] }.each do |acc|
+        file.write acc[:account_number]
+        file.write " #{acc[:message]}" if !acc[:valid] && acc[:message]
         file.write "\n"
       end
 
@@ -51,23 +50,21 @@ module BankOCR
         high  = ((i + 1) * 3) - 1
         shape = top[low..high] + middle[low..high] + bottom[low..high]
 
-        conversions[shape] || "?"
+        conversions[shape] || '?'
       end.join
     end
 
     def conversions
-      {
-        " _ | ||_|" => "0",
-        "     |  |" => "1",
-        " _  _||_ " => "2",
-        " _  _| _|" => "3",
-        "   |_|  |" => "4",
-        " _ |_  _|" => "5",
-        " _ |_ |_|" => "6",
-        " _   |  |" => "7",
-        " _ |_||_|" => "8",
-        " _ |_| _|" => "9"
-      }
+      { ' _ | ||_|' => '0',
+        '     |  |' => '1',
+        ' _  _||_ ' => '2',
+        ' _  _| _|' => '3',
+        '   |_|  |' => '4',
+        ' _ |_  _|' => '5',
+        ' _ |_ |_|' => '6',
+        ' _   |  |' => '7',
+        ' _ |_||_|' => '8',
+        ' _ |_| _|' => '9' }
     end
 
     def sum(account_number)
@@ -75,14 +72,13 @@ module BankOCR
     end
 
     def validate(number)
-      if number.include?("?")
-        [false, "ILL"]
-      elsif sum(number)%11 != 0
-        [false, "ERR"]
+      if number.include?('?')
+        [false, 'ILL']
+      elsif sum(number) % 11 != 0
+        [false, 'ERR']
       else
-        [true, "OK"]
+        [true, 'OK']
       end
     end
-
   end
 end

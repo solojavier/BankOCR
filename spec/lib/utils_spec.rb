@@ -9,11 +9,8 @@ describe BankOCR::Utils do
 
     let(:input_path) { File.dirname(__FILE__) + '/user_story_1.in'  }
     let(:account_numbers) do
-      [
-        "000000000", "111111111", "222222222", "333333333",
-        "444444444", "555555555", "666666666", "777777777",
-        "888888888", "999999999", "123456789", "12345678?"
-       ]
+      %w(000000000 111111111 222222222 333333333 444444444 555555555 666666666
+         777777777 888888888 999999999 123456789 12345678?)
     end
 
     it 'returns an array with account numbers' do
@@ -28,25 +25,23 @@ describe BankOCR::Utils do
 
   context 'when validating account numbers' do
 
-    let(:valid_numbers)   { [ "711111111b", "123456789", "490867715" ] }
-    let(:invalid_numbers) do
-      [ "888888888", "490067715", "012345678", "86110??36" ]
-    end
+    let(:valid_numbers)   { %w(711111111b 123456789 490867715) }
+    let(:invalid_numbers) { %w(888888888 490067715 012345678 86110??36) }
 
     let(:valid_accounts) do
       [
-        { account_number: "711111111b", valid: true, message: "OK" },
-        { account_number: "123456789",  valid: true, message: "OK" },
-        { account_number: "490867715",  valid: true, message: "OK" }
+        { account_number: '711111111b', valid: true, message: 'OK' },
+        { account_number: '123456789',  valid: true, message: 'OK' },
+        { account_number: '490867715',  valid: true, message: 'OK' }
       ]
     end
 
     let(:invalid_accounts) do
       [
-        { account_number: "888888888", valid: false, message: "ERR" },
-        { account_number: "490067715", valid: false, message: "ERR" },
-        { account_number: "012345678", valid: false, message: "ERR" },
-        { account_number: "86110??36", valid: false, message: "ILL" }
+        { account_number: '888888888', valid: false, message: 'ERR' },
+        { account_number: '490067715', valid: false, message: 'ERR' },
+        { account_number: '012345678', valid: false, message: 'ERR' },
+        { account_number: '86110??36', valid: false, message: 'ILL' }
       ]
     end
 
@@ -68,14 +63,14 @@ describe BankOCR::Utils do
 
     let(:accounts) do
       [
-        { account_number: "457508000", valid: true,  message: "OK"  },
-        { account_number: "664371495", valid: false, message: "ERR" },
-        { account_number: "86110??36", valid: false, message: "ILL" }
+        { account_number: '457508000', valid: true,  message: 'OK'  },
+        { account_number: '664371495', valid: false, message: 'ERR' },
+        { account_number: '86110??36', valid: false, message: 'ILL' }
       ]
     end
 
     let(:invalid_accounts) do
-      [ { test: 'this is not OK' } ]
+      [{ test: 'this is not OK' }]
     end
 
     let(:expected_content) do
@@ -90,13 +85,13 @@ describe BankOCR::Utils do
     it 'creates empty file if accounts are not sent' do
       subject.generate_report(output_path, [])
 
-      expect(generated_content).to eq("")
+      expect(generated_content).to eq('')
     end
 
     it 'skips invalid accounts' do
       subject.generate_report(output_path, invalid_accounts)
 
-      expect(generated_content).to eq("")
+      expect(generated_content).to eq('')
     end
 
     it 'creates expected content' do
