@@ -16,7 +16,7 @@ module BankOCR
 
     def validate_accounts(account_numbers)
       account_numbers.map do |number|
-        valid = sum(number)%11 == 0
+        valid = sum(number)%11 == 0 && !number.include?("?")
 
         { account_number: number, valid: valid }
       end
@@ -36,7 +36,7 @@ module BankOCR
         high  = ((i + 1) * 3) - 1
         shape = top[low..high] + middle[low..high] + bottom[low..high]
 
-        conversions[shape]
+        conversions[shape] || "?"
       end.join
     end
 

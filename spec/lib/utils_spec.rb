@@ -12,7 +12,7 @@ describe BankOCR::Utils do
       [
         "000000000", "111111111", "222222222", "333333333",
         "444444444", "555555555", "666666666", "777777777",
-        "888888888", "999999999", "123456789"
+        "888888888", "999999999", "123456789", "12345678?"
        ]
     end
 
@@ -24,7 +24,9 @@ describe BankOCR::Utils do
   context 'when validating account numbers' do
 
     let(:valid_numbers)   { [ "711111111b", "123456789", "490867715" ] }
-    let(:invalid_numbers) { [ "888888888", "490067715", "012345678"] }
+    let(:invalid_numbers) do
+      [ "888888888", "490067715", "012345678", "86110??36" ]
+    end
 
     let(:valid_accounts) do
       [
@@ -38,7 +40,8 @@ describe BankOCR::Utils do
       [
         { account_number: "888888888", valid: false },
         { account_number: "490067715", valid: false },
-        { account_number: "012345678", valid: false }
+        { account_number: "012345678", valid: false },
+        { account_number: "86110??36", valid: false }
       ]
     end
 
