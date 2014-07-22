@@ -68,9 +68,9 @@ describe BankOCR::Utils do
 
     let(:accounts) do
       [
-        {account_number: "457508000", valid: true,  message: "OK"},
-        {account_number: "664371495", valid: false, message: "ERR"},
-        {account_number: "86110??36", valid: false, message: "ILL"}
+        { account_number: "457508000", valid: true,  message: "OK"  },
+        { account_number: "664371495", valid: false, message: "ERR" },
+        { account_number: "86110??36", valid: false, message: "ILL" }
       ]
     end
 
