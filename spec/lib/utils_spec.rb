@@ -30,18 +30,18 @@ describe BankOCR::Utils do
 
     let(:valid_accounts) do
       [
-        { account_number: "711111111b", valid: true },
-        { account_number: "123456789",  valid: true },
-        { account_number: "490867715",  valid: true }
+        { account_number: "711111111b", valid: true, message: "OK" },
+        { account_number: "123456789",  valid: true, message: "OK" },
+        { account_number: "490867715",  valid: true, message: "OK" }
       ]
     end
 
     let(:invalid_accounts) do
       [
-        { account_number: "888888888", valid: false },
-        { account_number: "490067715", valid: false },
-        { account_number: "012345678", valid: false },
-        { account_number: "86110??36", valid: false }
+        { account_number: "888888888", valid: false, message: "ERR" },
+        { account_number: "490067715", valid: false, message: "ERR" },
+        { account_number: "012345678", valid: false, message: "ERR" },
+        { account_number: "86110??36", valid: false, message: "ILL" }
       ]
     end
 

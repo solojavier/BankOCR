@@ -14,11 +14,12 @@ module BankOCR
       file.close
     end
 
+    # Receives a list of account numbers and returns validation information
     def validate_accounts(account_numbers)
       account_numbers.map do |number|
-        valid = sum(number)%11 == 0 && !number.include?("?")
+        valid, message = validate(number)
 
-        { account_number: number, valid: valid }
+        { account_number: number, valid: valid, message: message}
       end
 
     end
@@ -57,6 +58,16 @@ module BankOCR
 
     def sum(account_number)
       (0..8).map { |i| account_number[i].to_i * (i + 2) }.reduce(:+)
+    end
+
+    def validate(number)
+      if number.include?("?")
+        [false, "ILL"]
+      elsif sum(number)%11 != 0
+        [false, "ERR"]
+      else
+        [true, "OK"]
+      end
     end
 
   end
