@@ -24,6 +24,7 @@ module BankOCR
 
     end
 
+    # Creates a file report in ouput path with accounts received
     def generate_report(output_path, accounts)
       file = File.open(output_path, 'w+')
 
