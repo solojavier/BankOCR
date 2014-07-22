@@ -1,7 +1,7 @@
 require_relative '../lib/utils'
 
-INPUT  = File.dirname(__FILE__) + '/input/ocr_input.in'
-OUTPUT = File.dirname(__FILE__) + '/output/ocr_accounts_report.out'
+INPUT  = File.dirname(__FILE__) + '/ocr_input.in'
+OUTPUT = File.dirname(__FILE__) + '/ocr_accounts_report.out'
 
 include BankOCR::Utils
 

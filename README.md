@@ -17,7 +17,7 @@ Use the following command:
 ruby bin/bank_ocr_kata.rb
 ```
 
-* It will generate a file under /bin/output directory with results
+* It will generate a file under /bin directory with results
 * If you want to modify input edit file /bin/ocr_input.in
 
 ## Tests
