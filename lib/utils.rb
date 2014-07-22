@@ -10,8 +10,10 @@ module BankOCR
         numbers << next_entry_to_digits(file)
       end
       numbers
+    rescue
+      []
     ensure
-      file.close
+      file.close if file
     end
 
     # Receives a list of account numbers and returns validation information

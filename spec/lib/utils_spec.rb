@@ -19,6 +19,11 @@ describe BankOCR::Utils do
     it 'returns an array with account numbers' do
       expect(subject.parse_file(input_path)).to eq(account_numbers)
     end
+
+    it 'returns empty account_numbers if error reading file' do
+      expect(subject.parse_file('invalid_path')).to eq([])
+    end
+
   end
 
   context 'when validating account numbers' do
