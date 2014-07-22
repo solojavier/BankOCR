@@ -2,6 +2,8 @@
 
 This repository provides a solution for BankOCR kata.
 
+![Build status](https://travis-ci.org/solojavier/BankOCR.svg)
+
 ## What is it about?
 
 Description of the problem can be found here: http://code.joejag.com/coding-dojo-bank-ocr/
