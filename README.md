@@ -6,7 +6,7 @@ This repository provides a solution for BankOCR kata.
 
 Description of the problem can be found here: http://code.joejag.com/coding-dojo-bank-ocr/
 
-## How to run
+## How to run?
 
 Use the following command:
 
