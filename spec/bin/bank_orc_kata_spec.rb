@@ -9,7 +9,7 @@ describe "Application execution" do
 
   subject { Object.new.extend(BankOCR::Utils) }
 
-  it 'parses file and creates report' do
+  it 'parses file and creates report', integration: true do
     account_numbers = subject.parse_file(input)
     accounts        = subject.validate_accounts(account_numbers)
 
