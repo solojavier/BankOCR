@@ -2,7 +2,7 @@
 
 This repository provides a solution for BankOCR kata.
 
-![Build status](https://travis-ci.org/solojavier/BankOCR.svg)
+[![Build status](https://travis-ci.org/solojavier/BankOCR.svg)](https://travis-ci.org/solojavier/BankOCR)
 
 ## What is it about?
 
