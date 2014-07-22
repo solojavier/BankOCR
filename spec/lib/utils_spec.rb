@@ -20,4 +20,24 @@ describe BankOCR::Utils do
       expect(subject.parse_file(input_path)).to eq(account_numbers)
     end
   end
+
+  context 'when validating account numbers' do
+
+    let(:valid_numbers)   { [ "711111111b", "123456789", "490867715" ] }
+    let(:invalid_numbers) { [ "888888888", "490067715", "012345678"] }
+
+    let(:valid_accounts) do
+      [
+        { account_number: "711111111b", valid: true },
+        { account_number: "123456789",  valid: true },
+        { account_number: "490867715",  valid: true }
+      ]
+    end
+
+    it 'validates valid account numbers' do
+      expect(subject.validate_accounts(valid_numbers)).to eq(valid_accounts)
+    end
+
+  end
+
 end

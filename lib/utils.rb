@@ -14,6 +14,9 @@ module BankOCR
       file.close
     end
 
+    def validate_accounts(account_numbers)
+    end
+
     private
 
     def next_entry_to_digits(file)
