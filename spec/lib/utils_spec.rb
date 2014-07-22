@@ -74,6 +74,10 @@ describe BankOCR::Utils do
       ]
     end
 
+    let(:invalid_accounts) do
+      [ { test: 'this is not OK' } ]
+    end
+
     let(:expected_content) do
       "457508000\n664371495 ERR\n86110??36 ILL\n"
     end
@@ -83,7 +87,19 @@ describe BankOCR::Utils do
       File.open(output_path).read
     end
 
-    it 'has expected content' do
+    it 'creates empty file if accounts are not sent' do
+      subject.generate_report(output_path, [])
+
+      expect(generated_content).to eq("")
+    end
+
+    it 'skips invalid accounts' do
+      subject.generate_report(output_path, invalid_accounts)
+
+      expect(generated_content).to eq("")
+    end
+
+    it 'creates expected content' do
       subject.generate_report(output_path, accounts)
 
       expect(generated_content).to eq(expected_content)

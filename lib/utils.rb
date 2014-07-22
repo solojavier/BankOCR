@@ -29,9 +29,9 @@ module BankOCR
     def generate_report(output_path, accounts)
       file = File.open(output_path, 'w+')
 
-      accounts.each do |account|
+      accounts.select{|a| !!a[:account_number]}.each do |account|
         file.write account[:account_number]
-        file.write " #{account[:message]}" if !account[:valid]
+        file.write " #{account[:message]}" if !account[:valid] && account[:message]
         file.write "\n"
       end
 
