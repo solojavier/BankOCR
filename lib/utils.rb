@@ -1,10 +1,38 @@
 module BankOCR
   module Utils
 
+    # Parses an OCR machine input file and returns an array of account numbers
     def parse_file(input_path)
       file    = File.open(input_path)
       numbers = []
-      conversions = {
+
+      while !file.eof?
+        numbers << next_entry_to_digits(file)
+      end
+      numbers
+    ensure
+      file.close
+    end
+
+    private
+
+    def next_entry_to_digits(file)
+      top    = file.readline
+      middle = file.readline
+      bottom = file.readline
+      _blank = file.readline
+
+      (0..8).map do |i|
+        low   = (i * 3)
+        high  = ((i + 1) * 3) - 1
+        shape = top[low..high] + middle[low..high] + bottom[low..high]
+
+        conversions[shape]
+      end.join
+    end
+
+    def conversions
+      {
         " _ | ||_|" => "0",
         "     |  |" => "1",
         " _  _||_ " => "2",
@@ -16,26 +44,7 @@ module BankOCR
         " _ |_||_|" => "8",
         " _ |_| _|" => "9"
       }
-
-      while !file.eof?
-        top    = file.readline
-        middle = file.readline
-        bottom = file.readline
-        _blank = file.readline
-        numbers << (0..8).map do |i|
-          low  = (i * 3)
-          high = ((i + 1) * 3) - 1
-          shape = top[low..high] + middle[low..high] + bottom[low..high]
-          conversions[shape]
-        end.join
-
-      end
-
-      numbers
-    ensure
-      file.close
     end
 
   end
-
 end
