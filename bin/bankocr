@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+
+p 'OCR accounts report generated succesfully'

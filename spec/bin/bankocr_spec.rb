@@ -9,9 +9,10 @@ describe 'Application execution' do
     "123456789\n000000051\n49086771? ILL\n"
   end
 
-  subject { Object.new.extend(BankOCR::Utils) }
+  #subject { Object.new.extend(BankOCR::Utils) }
 
   it 'parses file and creates report', integration: true do
+    pending
     account_numbers = subject.parse_file(input)
     accounts        = subject.validate_accounts(account_numbers)
 
