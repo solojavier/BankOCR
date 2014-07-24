@@ -1,7 +1,7 @@
 module BankOCR
   class AccountNumber
 
-    attr_reader :error_message
+    attr_reader :error_message, :digits
 
     def initialize(digits)
       @digits = digits
