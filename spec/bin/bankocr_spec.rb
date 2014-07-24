@@ -1,7 +1,9 @@
+require 'bankocr'
+
 describe 'Application execution' do
 
-  let(:input)  { File.dirname(__FILE__) + '/ocr_input.in' }
-  let(:output) { File.dirname(__FILE__) + '/accounts_report.out' }
+  let(:input)  { File.dirname(__FILE__) + '/input.in' }
+  let(:output) { File.dirname(__FILE__) + '/report.out' }
 
   let(:report) do
     "711111111\n777777177\n200800000\n333393333\n888888888 ERR\n" \
@@ -9,14 +11,12 @@ describe 'Application execution' do
     "123456789\n000000051\n49086771? ILL\n"
   end
 
-  #subject { Object.new.extend(BankOCR::Utils) }
+  before do
+    File.delete(output) if File.exists?(output)
+  end
 
   it 'parses file and creates report', integration: true do
-    pending
-    account_numbers = subject.parse_file(input)
-    accounts        = subject.validate_accounts(account_numbers)
-
-    subject.generate_report(output, accounts)
+    BankOCR.process(input, output)
 
     expect(File.open(output).read).to eq(report)
   end
