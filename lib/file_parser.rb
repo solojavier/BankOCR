@@ -1,6 +1,6 @@
 module BankOCR
+  # Reads a file from OCR and converts to digits
   class FileParser
-
     def initialize(input_path)
       @input_path = input_path
     end
@@ -54,6 +54,5 @@ module BankOCR
         ' _ |_||_|' => '8',
         ' _ |_| _|' => '9' }
     end
-
   end
 end

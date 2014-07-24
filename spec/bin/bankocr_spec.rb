@@ -12,7 +12,7 @@ describe 'Application execution' do
   end
 
   before do
-    File.delete(output) if File.exists?(output)
+    File.delete(output) if File.exist?(output)
   end
 
   it 'parses file and creates report', integration: true do

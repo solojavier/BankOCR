@@ -21,7 +21,7 @@ describe BankOCR::ReportGenerator do
   end
 
   before do
-    File.delete(output_path) if File.exists?(output_path)
+    File.delete(output_path) if File.exist?(output_path)
   end
 
   it 'creates empty file if accounts are not sent' do

@@ -9,7 +9,7 @@ describe BankOCR::AccountNumber do
     let(:wrong_numbers)   { %w(86110?356) }
 
     let(:wrong_accounts) do
-      [ { account_number: '86110??36', valid: false, message: 'ILL' } ]
+      [{ account_number: '86110??36', valid: false, message: 'ILL' }]
     end
 
     it 'validates valid account numbers' do

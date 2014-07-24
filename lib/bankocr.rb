@@ -1,5 +1,7 @@
-require "bankocr/version"
+require 'bankocr/version'
 
+# Module with logic to process a OCR input file
+# and export a report with account numbers
 module BankOCR
   autoload :FileParser,      'file_parser'
   autoload :AccountNumber,   'account_number'

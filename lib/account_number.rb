@@ -1,6 +1,6 @@
 module BankOCR
+  # Object representing an account number
   class AccountNumber
-
     attr_reader :error_message, :digits
 
     def initialize(digits)
@@ -26,6 +26,5 @@ module BankOCR
     def sum(account_number)
       (0..8).map { |i| account_number[i].to_i * (i + 2) }.reduce(:+)
     end
-
   end
 end

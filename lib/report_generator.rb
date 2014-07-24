@@ -1,6 +1,6 @@
 module BankOCR
+  # Creates a text file with generated report
   class ReportGenerator
-
     def initialize(output_path, account_numbers)
       @output_path     = output_path
       @account_numbers = account_numbers
@@ -11,12 +11,11 @@ module BankOCR
 
       @account_numbers.each do |account|
         file.write account.digits
-        file.write " #{account.error_message}" if !account.valid?
+        file.write " #{account.error_message}" unless account.valid?
         file.write "\n"
       end
 
       file.close
     end
-
   end
 end
