@@ -35,4 +35,5 @@ describe BankOCR::ReportGenerator do
 
     expect(generated_content).to eq(expected_content)
   end
+
 end

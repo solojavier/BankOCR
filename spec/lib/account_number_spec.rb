@@ -8,10 +8,6 @@ describe BankOCR::AccountNumber do
     let(:invalid_numbers) { %w(888888888 490067715 012345678) }
     let(:wrong_numbers)   { %w(86110?356) }
 
-    let(:wrong_accounts) do
-      [{ account_number: '86110??36', valid: false, message: 'ILL' }]
-    end
-
     it 'validates valid account numbers' do
       valid_numbers.each do |n|
         account = described_class.new(n)
