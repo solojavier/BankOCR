@@ -6,6 +6,7 @@ module BankOCR
   autoload :FileParser,      'file_parser'
   autoload :AccountNumber,   'account_number'
   autoload :ReportGenerator, 'report_generator'
+  autoload :Digit,           'digit'
 
   def self.process(input, output)
     account_numbers = BankOCR::FileParser.new(input).entries

@@ -4,9 +4,9 @@ describe BankOCR::ReportGenerator do
 
   let(:accounts) do
     [
-      BankOCR::AccountNumber.new('457508000'),
-      BankOCR::AccountNumber.new('664371495'),
-      BankOCR::AccountNumber.new('86110??36')
+      double('account', :to_s => '457508000', :valid? => true),
+      double('account', :to_s => '664371495', :valid? => false),
+      double('account', :to_s => '86110??36', :valid? => false)
     ]
   end
 

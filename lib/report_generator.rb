@@ -25,6 +25,5 @@ module BankOCR
         ' ERR'
       end
     end
-
   end
 end

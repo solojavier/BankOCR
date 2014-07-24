@@ -7,11 +7,11 @@ module BankOCR
     end
 
     def valid?
-      @valid ||= sum(@digits) % 11 == 0
+      @valid ||= sum(to_s) % 11 == 0
     end
 
     def to_s
-      @digits
+      @digits.map(&:value).join
     end
 
     private

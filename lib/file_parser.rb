@@ -6,15 +6,15 @@ module BankOCR
     end
 
     def entries
-      @entries || read_entries
+      @digits || read_entries
     end
 
     def read_entries
-      @entries = []
+      @digits = []
       file     = File.open(@input_path)
-      @entries << parse_entry(file) until file.eof?
+      @digits << parse_entry(file) until file.eof?
 
-      @entries.map{|e| BankOCR::AccountNumber.new(e) }
+      @digits.map { |d| BankOCR::AccountNumber.new(d) }
     rescue
       p 'Error reading input file, please validate'
       []
@@ -30,30 +30,17 @@ module BankOCR
       bottom = file.readline
       _blank = file.readline
 
-      entry_to_digits(top, middle, bottom)
+      build_digit(top, middle, bottom)
     end
 
-    def entry_to_digits(top, middle, bottom)
+    def build_digit(top, middle, bottom)
       (0..8).map do |i|
         low   = (i * 3)
         high  = ((i + 1) * 3) - 1
         shape = top[low..high] + middle[low..high] + bottom[low..high]
 
-        conversions[shape] || '?'
-      end.join
-    end
-
-    def conversions
-      { ' _ | ||_|' => '0',
-        '     |  |' => '1',
-        ' _  _||_ ' => '2',
-        ' _  _| _|' => '3',
-        '   |_|  |' => '4',
-        ' _ |_  _|' => '5',
-        ' _ |_ |_|' => '6',
-        ' _   |  |' => '7',
-        ' _ |_||_|' => '8',
-        ' _ |_| _|' => '9' }
+        BankOCR::Digit.new(shape)
+      end
     end
   end
 end

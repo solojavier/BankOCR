@@ -5,8 +5,7 @@ require 'bankocr'
 
 module BankOCR
   class ProcessCommand < Thor
-    desc 'process input_path output_path',
-      'Generates a report for account numbers read from input'
+    desc 'process input_path output_path', 'Create report for account numbers'
 
     def process(input, output)
       BankOCR.process(input, output)
