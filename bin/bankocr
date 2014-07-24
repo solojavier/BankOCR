@@ -1,7 +1,22 @@
 #!/usr/bin/env ruby
 
+require 'thor'
 require 'bankocr'
 
-BankOCR.process(ARGV[0], ARGV[1])
+module BankOCR
+  class ProcessCommand < Thor
+    desc 'process input_path output_path',
+      'Generates a report for account numbers read from input'
 
-p 'OCR accounts report generated succesfully'
+    def process(input, output)
+      begin
+        BankOCR.process(input, output)
+        p 'OCR accounts report generated succesfully'
+      rescue Exception => ex
+        p ex.message
+      end
+    end
+  end
+end
+
+BankOCR::ProcessCommand.start

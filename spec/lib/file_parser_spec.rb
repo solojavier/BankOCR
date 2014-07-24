@@ -20,7 +20,7 @@ describe BankOCR::FileParser do
     it 'returns empty account_numbers if error reading file' do
       parser = described_class.new('invalid_path')
 
-      expect(parser.entries).to eq([])
+      expect{parser.entries}.to raise_error('Error reading input file, please validate')
     end
 
   end

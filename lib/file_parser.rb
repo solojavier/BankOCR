@@ -16,7 +16,7 @@ module BankOCR
 
       @entries
     rescue
-      []
+      raise 'Error reading input file, please validate'
     ensure
       file.close if file
     end
