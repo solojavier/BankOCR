@@ -15,7 +15,7 @@ Use the following commands:
 
 ```
 gem install backocr
-bankocr process ./bin/input.in ./bin/output
+bankocr process bin/input.in bin/output
 ```
 
 * It will generate a file under /bin directory with results
