@@ -7,7 +7,7 @@ module BankOCR
     end
 
     def valid?
-      @valid ||= sum(to_s) % 11 == 0
+      @valid ||= sum % 11 == 0
     end
 
     def to_s
@@ -16,8 +16,8 @@ module BankOCR
 
     private
 
-    def sum(account_number)
-      (0..8).map { |i| account_number[i].to_i * (i + 2) }.reduce(:+)
+    def sum
+      (0..8).map { |i| to_s[i].to_i * (i + 2) }.reduce(:+)
     end
   end
 end

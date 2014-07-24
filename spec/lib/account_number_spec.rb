@@ -30,6 +30,12 @@ describe BankOCR::AccountNumber do
       end
     end
 
+    it 'validates wrong account number' do
+      account = described_class.new(digits('12345678?'))
+
+      expect(account.valid?).to eq(false)
+    end
+
   end
 
 end
