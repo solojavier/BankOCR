@@ -11,14 +11,15 @@ This repository provides a solution for BankOCR kata.
 
 ## How to run?
 
-Use the following command:
+Use the following commands:
 
 ```
-ruby bin/bank_ocr_kata.rb
+gem install backocr
+bankocr ./bin/input.in ./bin/output
 ```
 
 * It will generate a file under /bin directory with results
-* If you want to modify input edit file /bin/ocr_input.in
+* If you want to modify input edit file /bin/input.in
 
 ## Tests
 
@@ -29,17 +30,3 @@ gem install bundler
 bundle install
 bundle exec rspec spec
 ```
-
-## Why?
-
-This is an programming kata, not meant to be used in production.
-
-## How is it solved?
-
-This program solves the kata using a functional approach.
-
-The following methods are provided:
-
-* **parse_file**: Reads a text file with account numbers in OCR format, it returns an array of account numbers
-* **validate_accounts**: Receives an array of account numbers and returns a map with validation info
-* **generate_report**: Receives an output path and a map with accounts information and generates a file report
