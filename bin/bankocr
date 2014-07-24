@@ -9,12 +9,7 @@ module BankOCR
       'Generates a report for account numbers read from input'
 
     def process(input, output)
-      begin
-        BankOCR.process(input, output)
-        p 'OCR accounts report generated succesfully'
-      rescue Exception => ex
-        p ex.message
-      end
+      BankOCR.process(input, output)
     end
   end
 end

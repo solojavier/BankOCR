@@ -10,7 +10,7 @@ module BankOCR
       file = File.open(@output_path, 'w+')
 
       @account_numbers.each do |account|
-        file.write "#{account.to_s}#{error(account)}\n"
+        file.write "#{account}#{error(account)}\n"
       end
 
       file.close
@@ -20,9 +20,9 @@ module BankOCR
 
     def error(account)
       if account.to_s.include?('?')
-        " ILL"
+        ' ILL'
       elsif !account.valid?
-        " ERR"
+        ' ERR'
       end
     end
 

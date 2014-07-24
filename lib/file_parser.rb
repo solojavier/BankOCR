@@ -14,9 +14,10 @@ module BankOCR
       file     = File.open(@input_path)
       @entries << parse_entry(file) until file.eof?
 
-      @entries
+      @entries.map{|e| BankOCR::AccountNumber.new(e) }
     rescue
-      raise 'Error reading input file, please validate'
+      p 'Error reading input file, please validate'
+      []
     ensure
       file.close if file
     end

@@ -14,13 +14,13 @@ describe BankOCR::FileParser do
     it 'returns an array with account numbers' do
       parser = described_class.new(input_path)
 
-      expect(parser.entries).to eq(account_numbers)
+      expect(parser.entries.map(&:to_s)).to eq(account_numbers)
     end
 
     it 'returns empty account_numbers if error reading file' do
       parser = described_class.new('invalid_path')
 
-      expect{parser.entries}.to raise_error('Error reading input file, please validate')
+      expect(parser.entries).to eq([])
     end
 
   end

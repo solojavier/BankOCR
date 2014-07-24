@@ -8,8 +8,7 @@ module BankOCR
   autoload :ReportGenerator, 'report_generator'
 
   def self.process(input, output)
-    digit_strings   = BankOCR::FileParser.new(input).entries
-    account_numbers = digit_strings.map { |d| BankOCR::AccountNumber.new(d) }
+    account_numbers = BankOCR::FileParser.new(input).entries
 
     BankOCR::ReportGenerator.new(output, account_numbers).save!
   end
