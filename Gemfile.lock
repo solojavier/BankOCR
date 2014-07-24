@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    bankocr (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -19,4 +24,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rspec (~> 3.0.0)
+  bankocr!
+  bundler (~> 1.6)
+  rspec (~> 3.0)
