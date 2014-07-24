@@ -13,7 +13,6 @@ describe BankOCR::AccountNumber do
         account = described_class.new(n)
 
         expect(account.valid?).to eq(true)
-        expect(account.error_message).to eq(nil)
       end
     end
 
@@ -22,7 +21,6 @@ describe BankOCR::AccountNumber do
         account = described_class.new(n)
 
         expect(account.valid?).to eq(false)
-        expect(account.error_message).to eq('ERR')
       end
     end
 
@@ -31,7 +29,6 @@ describe BankOCR::AccountNumber do
         account = described_class.new(n)
 
         expect(account.valid?).to eq(false)
-        expect(account.error_message).to eq('ILL')
       end
     end
 
