@@ -11,15 +11,15 @@ This repository provides a solution for BankOCR kata.
 
 ## How to run?
 
+* You can download a sample input file from here: https://github.com/solojavier/BankOCR/raw/master/bin/input.in
+* It will generate a report in output path
+
 Use the following commands:
 
 ```
 gem install backocr
-bankocr process bin/input.in bin/output
+bankocr process input_path output_path
 ```
-
-* It will generate a file under /bin directory with results
-* If you want to modify input edit file /bin/input.in
 
 ## Tests
 
