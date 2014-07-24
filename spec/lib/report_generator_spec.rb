@@ -20,6 +20,9 @@ describe BankOCR::ReportGenerator do
     File.open(output_path).read
   end
 
+  before do
+    File.delete(output_path) if File.exists?(output_path)
+  end
 
   it 'creates empty file if accounts are not sent' do
     described_class.new(output_path, []).save!
