@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bankocr (0.0.5)
+    bankocr (0.1.0)
       thor (~> 0.19)
 
 GEM
