@@ -7,14 +7,14 @@ Gem::Specification.new do |spec|
   spec.name          = 'bankocr'
   spec.version       = BankOCR::VERSION
   spec.authors       = ['Javier Cervantes']
-  spec.email         = ['javier@hybridgroup.com']
+  spec.email         = ['1.27201@gmail.com']
   spec.summary       = %w(Solution to BankOCR Kata)
-  spec.description   = %w(Solution to BankOCR Kata)
+  spec.description   = %w(Solution in ruby of BankOCR Kata: http://code.joejag.com/coding-dojo-bank-ocr/)
   spec.homepage      = 'https://github.com/solojavier/bankOCR'
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files -z`.split('\x0')
-  spec.executables   = spec.files.grep(/^bin/) { |f| File.basename(f) }
+  spec.files         = `git ls-files -z`.split("\x0")
+  spec.executables   = ['bankocr']
   spec.test_files    = spec.files.grep(/^(test|spec|features)/)
   spec.require_paths = ['lib']
 
