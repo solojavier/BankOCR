@@ -1,4 +1,5 @@
 module BankOCR
+  # Represents a digit read from OCR
   class Digit
     attr_reader :value, :shape
 

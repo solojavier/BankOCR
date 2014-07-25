@@ -4,6 +4,7 @@ require 'thor'
 require 'bankocr'
 
 module BankOCR
+  # Command line object that wraps BankOCR process
   class ProcessCommand < Thor
     desc 'process input_path output_path', 'Create report for account numbers'
 

@@ -1,7 +1,6 @@
 module BankOCR
   # Object representing an account number
   class AccountNumber
-
     def initialize(digits)
       @digits = digits
     end
