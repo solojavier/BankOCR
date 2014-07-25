@@ -3,6 +3,7 @@
 This repository provides a solution for BankOCR kata.
 
 [![Build status](https://travis-ci.org/solojavier/BankOCR.svg)](https://travis-ci.org/solojavier/BankOCR)
+[![Coverage Status](https://coveralls.io/repos/solojavier/BankOCR/badge.png)](https://coveralls.io/r/solojavier/BankOCR)
 
 ## What is it about?
 
