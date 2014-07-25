@@ -1,6 +1,6 @@
-require 'bankocr'
+require 'spec_helper'
 
-describe 'Application execution' do
+RSpec.describe 'Application execution' do
 
   let(:input)  { File.dirname(__FILE__) + '/input.in' }
   let(:output) { File.dirname(__FILE__) + '/report.out' }

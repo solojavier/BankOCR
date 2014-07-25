@@ -1,12 +1,15 @@
-require 'bankocr'
+require 'spec_helper'
 
-describe BankOCR::ReportGenerator do
+RSpec.describe BankOCR::ReportGenerator do
 
   let(:accounts) do
     [
-      double('account', :to_s => '457508000', :valid? => true),
-      double('account', :to_s => '664371495', :valid? => false),
-      double('account', :to_s => '86110??36', :valid? => false)
+      instance_double('BankOCR::AccountNumber',
+                      to_s: '457508000', valid?: true),
+      instance_double('BankOCR::AccountNumber',
+                      to_s: '664371495', valid?: false),
+      instance_double('BankOCR::AccountNumber',
+                      to_s: '86110??36', valid?: false)
     ]
   end
 

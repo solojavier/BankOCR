@@ -1,6 +1,6 @@
-require 'bankocr'
+require 'spec_helper'
 
-describe BankOCR::AccountNumber do
+RSpec.describe BankOCR::AccountNumber do
 
   def digits(string)
     string.split('').map do |c|

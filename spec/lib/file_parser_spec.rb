@@ -1,6 +1,6 @@
-require 'bankocr'
+require 'spec_helper'
 
-describe BankOCR::FileParser do
+RSpec.describe BankOCR::FileParser do
 
   let(:input_path) { File.dirname(__FILE__) + '/user_story_1.in'  }
 
