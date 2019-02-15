@@ -7,7 +7,7 @@ This repository provides a solution for BankOCR kata.
 
 ## What is it about?
 
-* Description of the problem can be found here: http://code.joejag.com/coding-dojo-bank-ocr/
+* Description of the problem can be found here: http://codingdojo.org/kata/BankOCR/
 * Current implementation covers the first 3 use cases.
 
 ## How to install
